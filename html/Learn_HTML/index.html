@@ -1,93 +1,139 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name = "author" content="Tak">
-    <meta name= "description" content="This page contains all the things I am learning how to  create as I learn html.">
+    <meta name="author" content="Tak">
+    <meta name="description" content="This page contains all the things I am learning how to  create as I learn html.">
     <title>My first Web Page</title>
     <link rel="icon" href="html5.png" type="image/x-icon">
     <link rel="stylesheet" href="main.css" type="text/css">
 </head>
 
 <body>
-    <h1>My Goals for the Year</h1>
+    <header>
+        <h1>My Goals for the Year</h1>
 
+        <hr>
+
+        <nav aria-labelledby="primary-navigation">
+            <h2 id="primary-navigation"> Primary-navigation</h2>
+            <ul>
+                <li>
+                    <a href="#html">Learn HTML</a>
+                </li>
+                <li>
+                    <a href="#vacation">Planning a vacation</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <hr>
-    
-    <nav>
-        <ul>
-            <li>
-                <a href="#html">Learn HTML</a>
-            </li>
-            <li>
-                <a href="#vacation">Planning a vacation</a>
-            </li>
-        </ul>
-    </nav>
+    <main>
+        <section id="html">
+            <h2>I am ready to learn HTML</h2>
+            <p>This is my first Web Page.</p>
+            <article>
+                <h3>html5</h3>
+                <img src="images/html_logo_300x300.png" alt="HTML5 Logo" title="I am learning HTML5" width="300"
+                    height="300">
+                <figure>
+                    <figcaption>An example of HTML5</figcaption>
+                    <p>
+                        <code>&lt;h1&gt;Hello World&lt;/h1&gt;</code>
+                    </p>
 
-    <hr>
-    <section id="html">
-        <h2>I am ready to learn HTML</h2>
-        <p>This is my first Web Page.</p>
+                </figure>
+            </article>
+            <article>
+                <h3>My daily Schedule</h3>
+                <p>Let me tell you how...: </p>
+                <ol>
+                    <li>...I learn more about web dev. </li>
+                    <li>...I plan out my schedule. </li>
+                    <li>...I use resources from <abbr title="Mozilla Dveloper Network">
+                            <a href="https://developer.mozilla.org/ko/"> MDN</a>
+                        </abbr>. </li>
+                </ol>
+                <aside>
+                    <details>
+                        <summary>Guess the <mark>number of hours </mark>I code per day</summary>
+                        <p>I start at <time datetime="08:00">8 am</time> and I write code for <time datetime="PT3H">3
+                                hours</time> every morning.</p>
+                    </details>
+                </aside>
+            </article>
+        </section>
 
-        <h3>My daily Schedule</h3>
-        <p>Let me tell you how...: </p>
-        <ol>
-            <li>...I learn more about web dev. </li>
-            <li>...I plan out my schedule. </li>
-            <li>...I use resources from <abbr title="Mozilla Dveloper Network">
-                <a href="https://developer.mozilla.org/ko/"> MDN</a>
-            </abbr>. </li>
-        </ol>
-    </section>
+        <hr>
+        <section id="vacation">
+            <h2>I a also planning a vacation.</h2>
 
-    <hr>
-    <section id="vacation">
-        <h2>I a also planning a vacation.</h2>
-        
-        <p>I've been working hard and <em>need a gateway.</em> </p>    
-        <p>I live in <abbr title= "Capital of South Korea">Seoul</abbr> so I want to visit Busan sea.</p>
+            <p>I've been working hard and <em>need a gateway.</em> </p>
+            <p>I live in <abbr title="Capital of South Korea">Seoul</abbr> so I want to visit Busan sea.</p>
 
-        <h3>Place I'd Lite to Visit</h3>
-        <ul>
-            <li><p>Ive heard good things about the Busan</p></li>
-            <li>
-                <p>Ive heard good things about going here:</p>
+            <article>
+                <h3>Places I'd Lite to Visit</h3>
+                <ul>
+                    <li>
+                        <p>Ive heard good things about the Busan</p>
+                        <figure>
+                            <img src="images/busan.jpg" alt="busan city" title="I visited Busan 2 years ago" width="300"
+                                height="168" loading="lazy">
+                            <figcaption>
+                                Busan Night View
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <p>Ive heard good things about going here:</p>
 
-                <address>
-                    Place2 for riding a bike <br>
-                    Place1 for eat <br>
-                    Place3 for our family trip <br>
-                </address>
+                        <address>
+                            Place1 for riding a bike <br>
+                            Place2 for eat <br>
+                            Place3 for our family trip <br>
+                        </address>
+                        <figure>
+                            <img src="images/vacation.jpg" alt="Cancun Vacation" title="It's 5 o'clock Somewhere!"
+                                width="400" height="257" loading="lazy">
+                            <figcaption>
+                                down figcaption
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </article>
+            <!-- TODO: add more places -->
+            <article>
+                <h3>Place I'd Lite to Avoid</h3>
+                <dl>
+                    <dt>North Pole</dt>
+                    <dd>I hear this is <strong> cold</strong>!</dd>
 
-            </li>
-        </ul> 
-        <!-- TODO: add more places -->
+                    <dt>South Pole</dt>
+                    <dd>This is also cold.</dd>
 
-        <h3>Place I'd Lite to Avoid</h3>
-        <dl>
-            <dt>North Pole</dt>
-            <dd>I hear this is <strong> cold</strong>!</dd>
-
-            <dt>South Pole</dt>
-            <dd>This is also cold.</dd>
-
-            <dt>Mountain Tops</dt>
-            <dd>These are also cold.</dd>
-        </dl>    
-    </section>
-    <hr>
-    
-    <!-- 
-        Link Text Rule #1. Avoid printing the full web address to the page 
-        Link Text Rule #2. Avoid "links to" phrase. We all know it is a link 
-        Link Text Rule #3. Keep your link text short. Exact topic. Not sentences. 
-        Link Text Rule #4. No links that say "click here". It provides no meaning. 
-    -->
-    &lt;&lt;&lt; &copy; <a href="about.html">Tak</a>  &gt;&gt;&gt; 
-    <p>
-        <a href="#">Back to Top</a>
-    </p>
+                    <dt>Mountain Tops</dt>
+                    <dd>These are also cold.</dd>
+                </dl>
+            </article>
+        </section>
+        <hr>
+    </main>
+    <footer>
+        <p>
+            <!-- 
+                Link Text Rule #1. Avoid printing the full web address to the page 
+                Link Text Rule #2. Avoid "links to" phrase. We all know it is a link 
+                Link Text Rule #3. Keep your link text short. Exact topic. Not sentences. 
+                Link Text Rule #4. No links that say "click here". It provides no meaning. 
+            -->
+            &lt;&lt;&lt; &copy; <a href="about.html">Tak</a> &gt;&gt;&gt;
+        </p>
+        <p>
+            <a href="#">Back to Top</a>
+        </p>
+    </footer>
 </body>
+
 </html>
