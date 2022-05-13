@@ -1,0 +1,11 @@
+start: 2022/5/13
+
+Link: https://www.youtube.com/watch?v=kUMe1FH4CHE&t=1751s
+
+following this video to learn  <HTML>
+
+I learned <Network> a bit by project/Network_tutorial
+
+for next , I will do "Python Website Full Tutorial - Flask, Authentication, Databases & More"
+Link: https://www.youtube.com/watch?v=dam0GPOAvVI&list=WL&index=1
+
