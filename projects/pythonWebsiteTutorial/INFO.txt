@@ -1,0 +1,7 @@
+link: https://www.youtube.com/watch?v=dam0GPOAvVI&list=WL&index=3&t=196s
+
+"Python Website Full Tutorial - Flask, Authentication, Databases & More"
+
+before I start this Tutorial, I learned HTML a bit and Network_tutorial by Python
+
+after I do this project, I will learn Javascript, and make Website.
