@@ -1,3 +1,4 @@
+# 트리의 지름 메모리 초과
 import heapq
 
 nodeN = int(input())

@@ -1,3 +1,4 @@
+// 문자열 폭발 시간초과
 #include <stdio.h>
 #include <string.h>
 #define S1_MAX_LEN 1000000
