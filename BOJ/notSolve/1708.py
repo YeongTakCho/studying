@@ -1,7 +1,7 @@
-# TypeError code for "BOJ 1708. 볼록 껍질".
+# Wrong code for "BOJ 1708. 볼록 껍질".
 
 # - Problem link: https://www.acmicpc.net/problem/1708
-# - MY link: https://www.acmicpc.net/source/43505049
+# - MY link: https://www.acmicpc.net/source/43505675
 # - Solution link: https://wansook0316.github.io/cs/algorithm/2020/04/19/%EB%B0%B1%EC%A4%80-%EB%B3%BC%EB%A1%9D-%EA%BB%8D%EC%A7%88.html
 # - Solution: Graham Scan
 
@@ -9,11 +9,13 @@ import sys
 read = sys.stdin.readline
 
 
-def get_fx(p0, p1):  # y= ax + b , return a, b
+def get_fx(p0, p1, mul=1, only1=False):  # y= ax + b , return a, b
     if p0[0] == p1[0] and p0[1] == p1[1]:
         return False
     a = (p1[1]-p0[1]) / (p1[0]-p0[0])
     b = p0[1] - a*p0[0]
+    if only1:
+        return a*mul
     return [a, b]
 
 
@@ -21,6 +23,12 @@ def is_up(fx, p, mul):
     if (p[1]) * mul > (fx[0] * p[0] + fx[1]) * mul:
         return True
     return False
+
+
+def ifFalse(d):
+    if d == False:
+        return -1e10
+    return d
 
 
 N = int(input())
@@ -58,17 +66,14 @@ for y_direct in [1, -1]:
                     outside.append(p)
             while outside:
                 new_outside = list()
-                xmaxList = list(map(lambda p: (
-                    get_fx(xmax, p)[0] * x_direct * y_direct, p[0] * y_direct), outside))
-                print(xmaxList)
-                xmax = max(outside, key=lambda p: (get_fx(xmax, p)[
-                           0] * x_direct * y_direct, p[0] * y_direct))
-                ymaxList = list(map(lambda p: (
-                    get_fx(ymax, p)[0] * x_direct * y_direct * -1, p[0] * y_direct), outside))
-                print(ymaxList)
-                ymax = max(outside, key=lambda p: (get_fx(ymax, p)[
-                           0] * x_direct * y_direct * -1, p[0] * y_direct))
 
+                xmax = max(outside, key=lambda p: (ifFalse(
+                    get_fx(xmax, p, mul=x_direct * y_direct, only1=True)), p[0] * y_direct))
+
+                ymax = max(outside, key=lambda p: (ifFalse(
+                    get_fx(ymax, p, mul=x_direct * y_direct * -1, only1=True)), p[0] * y_direct))
+
+                # 아마 여기서 xmax ymax가 제데로 들어가지 않아서 get_fx에서 에러가 type error가 발생
                 fx = get_fx(xmax, ymax)
                 if not fx:
                     ans += 1
