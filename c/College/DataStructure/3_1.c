@@ -1,6 +1,3 @@
-// ÀÌÁø °Ë»ö Æ®¸® »ğÀÔ°ú »èÁ¦ (child°¡ 0ÀÎ °æ¿ì, 1ÀÎ °æ¿ì, 2ÀÎ °æ¿ì)
-// (3»èÁ¦, 30 »èÁ¦, 15»èÁ¦)
-// °¢°¢À» »èÁ¦ÇÑ ÈÄ In- order Ãâ·Â
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -44,7 +41,7 @@ void printInorder(struct nodeTree *root)
     printf("%d ", root->key);
     printInorder(root->right);
 }
-int getMin(struct nodeTree *root) // ³ëµå »èÁ¦¸¦ À§ÇÑ º¸Á¶ ÇÔ¼ö
+int getMin(struct nodeTree *root)
 {
     struct nodeTree *temp = root;
 
@@ -55,7 +52,7 @@ int getMin(struct nodeTree *root) // ³ëµå »èÁ¦¸¦ À§ÇÑ º¸Á¶ ÇÔ¼ö
 
     return temp->key;
 }
-struct nodeTree *removeNode(struct nodeTree *root, int val) //³ëµå »èÁ¦¸¦ À§ÇÑ ÇÔ¼ö
+struct nodeTree *removeNode(struct nodeTree *root, int val)
 {
     if (root == NULL)
         return NULL;
@@ -124,6 +121,6 @@ int main()
     removeNode(root, 15);
     printInorder(root);
     printf("\n");
-
+    printf("ìŠ¤ë§ˆíŠ¸ICTìœµí•©ê³µí•™ê³¼_202112348_ì¡°ì˜íƒ\n");
     return 0;
 }
