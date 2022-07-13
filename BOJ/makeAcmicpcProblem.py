@@ -18,6 +18,7 @@ def makeAcmicpcProblem():
 
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
+    # print(soup)
     title = str(soup.select('title'))
     print(title)
     problem_num = url[32:]
