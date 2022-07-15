@@ -33,7 +33,7 @@ def makeAcmicpcProblem():
         file_name = path + problem_num + '- ' + problem_name + '.py'
         f = open(file_name, 'w', encoding="UTF-8")
 
-    txt = '# SOLVING code for "BOJ {0}. {1}"\n#- Problem link: {2}\n#- MY link:\n'.format(
+    txt = '# SOLVING code for "BOJ {0}. {1}"\n#- Problem link: {2}\n#- MY link:\n#- Used algorithm:'.format(
         problem_num, problem_name, url)
     f.write(txt)
     f.close
