@@ -2,11 +2,11 @@ import os
 import os.path
 import requests
 from bs4 import BeautifulSoup
+from settings import path
 
 
 def makeAcmicpcProblem():
-    # path = 'C:\\Users\\s_andycho1120\\Desktop\\studying\\BOJ\\'
-    path = 'C:\\Users\\andyc\\Desktop\\studying\\BOJ\\'
+
     print('!!! WARNING : IT IS ONLY FOR ACMICPC.NET PROBLEM URL !!!')
 
     url = input('input url: ')
