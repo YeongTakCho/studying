@@ -1,6 +1,6 @@
-# SOLVING code for "BOJ 14939. 불 끄기"
+# WRONG code for "BOJ 14939. 불 끄기"
 # - Problem link: https://www.acmicpc.net/problem/14939
-# - MY link:
+# - MY link: https://www.acmicpc.net/source/46209617
 # - Used algorithm:
 import sys
 read = sys.stdin.readline
@@ -9,50 +9,38 @@ mxy = ((0, 0), (0, 1), (0, -1), (-1, 0), (1, 0))
 
 
 def sol(matrix):
-    def is_inside_matrix(state):
-        y = state[0]
-        x = state[1]
-        if 0 <= y < 10 and 0 <= x < 10:
+    def is_inside_matrix(i, j):
+        if 0 <= i < 10 and 0 <= j < 10:
             return True
-        else:
-            return False
-    # make matrix containing number of near bulbs
-    near_bulb = [[0]*10 for _ in range(10)]
-    for i in range(10):
-        for j in range(10):
-            if matrix[i][j] == 1:
-                for my, mx in mxy:
-                    ni = i + my
-                    nj = j + mx
-                    if is_inside_matrix((ni, nj)):
-                        near_bulb[ni][nj] += 1
-    # get index of having biggest number of near bulb
-    max_arr = list(map(lambda line: max(zip(line, range(10))), near_bulb))
-    max_val = max(zip(max_arr, range(10)))
+        return False
 
-    ans = 0
-    while max_val[0][0] > 0:
+    def press(b, i, j):
+        for mx, my in mxy:
+            ni = i + my
+            nj = j + mx
+            if is_inside_matrix(ni, nj) and b[ni][nj] == 1:
+                b[ni][nj] = 0
 
-        x = max_val[0][1]
-        y = max_val[1]
+    case_cnt = [101] * (1 << 10)
+    for test_case in range(1 << 10):
+        tmp_board = [matrix[i][:] for i in range(10)]
+        press_cnt = 0
 
-        for my, mx in mxy:
-            nx = x + mx
-            ny = y + my
-            # deleting bulbs
-            if is_inside_matrix((ny, nx)) and matrix[ny][nx] == 1:
-                matrix[ny][nx] = 0
-                for my2, mx2 in mxy:
-                    nnx = nx + mx2
-                    nny = ny + my2
-                    # reducing near bulb count
-                    if is_inside_matrix((nny, nnx)) and near_bulb[nny][nnx] > 0:
-                        near_bulb[nny][nnx] -= 1
+        mark = 1
+        for j in range(9, -1, -1):
+            if test_case & mark:
+                press(tmp_board, 0, j)
+                press_cnt += 1
+            mark <<= 1
 
-        max_arr = list(map(lambda line: max(zip(line, range(10))), near_bulb))
-        max_val = max(zip(max_arr, range(10)))
-        ans += 1
-    return ans
+        for i in range(1, 10):
+            for j in range(10):
+                if tmp_board[i-1][j] == 1:
+                    press(tmp_board, i, j)
+                    press_cnt += 1
+        if max(tmp_board[9]) == 0:
+            case_cnt[test_case] = press_cnt
+    return min(case_cnt)
 
 
 def symbol_to_int(symbol):
