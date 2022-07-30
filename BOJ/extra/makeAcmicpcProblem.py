@@ -14,6 +14,7 @@ def makeAcmicpcProblem():
     if url[:32] != 'https://www.acmicpc.net/problem/':
 
         print('\n THAT IS WRONG URL, PLEASE CHECK YOUR URL\n')
+
         return
 
     response = requests.get(url)

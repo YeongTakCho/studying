@@ -1,4 +1,4 @@
-# SOLVING code for "BOJ 11444. 피보나치 수 6"
+# SOLVING code for " . 피보나치 수 6"
 # - Problem link: https://www.acmicpc.net/problem/11444
 # - MY link:
 DIV = 1000
