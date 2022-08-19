@@ -1,7 +1,7 @@
 # TIMEOVER code for "BOJ 2098. 외판원 순회"
 # - Problem link: https://www.acmicpc.net/problem/2098
 # - MY link:
-from itertools import starmap
+from re import L
 import sys
 
 MAXSIZE = sys.maxsize
@@ -9,41 +9,55 @@ read = sys.stdin.readline
 
 
 def sol():
-    N = int(read())
-    W = list()
+    global N, W, case_size, dp
+
+    # 길이 없는 곳의 길이를 MAXSIZE로 최기화
     for i in range(N):
-        def zero_to_maxsize(val): return val if not val == 0 else MAXSIZE
-        W.append(list(map(zero_to_maxsize, map(int, read().split()))))
+        for j in range(N):
+            if not W[i][j]:
+                W[i][j] = float('inf')
 
-    def recursion(not_visited, pos, cost, start):
+    for i in range(N):
+        dp[i][0] = W[i][0]
 
-        if not not_visited:
-            # return [cost + W[pos][start], [pos]]
-            return [cost + W[pos][start]]
+    for visited_cnt in range(1, N-1):
+        for case in range(1, case_size):
+            if count(case, N) == visited_cnt:
+                for i in range(N-1):
+                    if isin(i, case):
+                        dp[i][case] = get_minimum(N, W, i, case, dp)
 
-        min_cost = (MAXSIZE, 0)
-        for i in range(len(not_visited)):
-            next_pos = not_visited[i]
-            next_cost = cost + W[pos][next_pos]
-            total_cost = recursion(
-                not_visited[:i] + not_visited[i+1:], next_pos, next_cost, start)
-            # if len(not_visited) == N-1:
-            #     print(start, total_cost)
-            if min_cost[0] > total_cost[0]:
-                min_cost = total_cost
-
-        return total_cost
-        # return [total_cost[0], [pos] + total_cost[1]]
-
-    min_total_cost = [MAXSIZE, 0]
-    for start in range(N):
-        total_cost = recursion(
-            list(list(range(start)) + list(range(start+1, N))), start, 0, start)
-
-        if min_total_cost[0] > total_cost[0]:
-            min_total_cost = total_cost
-
-    return min_total_cost[0]
+    return get_minimum(N, W, 0, case_size-1, dp)
 
 
-print(sol())
+def count(case, N):
+    cnt = 0
+    for n in range(N-1):
+        if case & (1 << n):
+            cnt += 1
+    return cnt
+
+
+def isin(j, case):
+    return True if case & (1 << j) else False
+
+
+def get_minimum(N, W, i, route, dp):
+    minimum_dist = float('inf')
+    for j in range(1, N):
+        if isin(j, route):
+            before_route = route & ~(1 << j - 1)
+            dist = W[i][j] + dp[j][before_route]
+            if minimum_dist > dist:
+                minimum_dist = dist
+    return minimum_dist
+
+
+if __name__ == '__main__':
+    N = int(read())
+    W = [list(map(int, read().split())) for _ in range(N)]
+    case_size = 2 ** (N-1)
+    dp = [[float('inf') for _ in range(case_size)] for _ in range(N)]
+    print(sol())
+    for line in dp:
+        print(line)
